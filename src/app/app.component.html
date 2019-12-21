@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <br/><br/><br/><br/><br/><br/>
+  <div class="row justify-content-center">
+    <div class="col-8 text-center">
+      <form>
+        <p class="h4 mb-4">Please enter the employee id to get the salary information</p>
+      
+        <input type="number" id="idEmployee" class="form-control mb-4" placeholder="Employee Id" [(ngModel)]="idEmployee" name="idEmployee">
+      
+        <button class="btn btn-primary" type="button" (click)="getEmployees()">Get Employees</button>
+      
+      </form>
+    </div>
+  </div><br/><br/>
+  <div class="row justify-content-center" *ngIf="employees != null && employees.length == 0">
+    <div class="col-8">
+      <p class="h6 mb-4">There is not information for search</p>
+    </div>
+  </div>
+  <div class="row justify-content-center" *ngIf="employees != null && employees.length > 0">
+    <div class="col-10">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contract Type</th>
+            <th scope="col">Role</th>
+            <th scope="col">Hourly Salary</th>
+            <th scope="col">Monthly Salary</th>
+            <th scope="col">Annual Salary</th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let employee of employees">
+            <th scope="row">{{employee.id}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{employee.contractTypeName}}</td>
+            <td>{{employee.roleName}}</td>
+            <td>{{employee.hourlySalary}}</td>
+            <td>{{employee.monthlySalary}}</td>
+            <td>{{employee.salary}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
